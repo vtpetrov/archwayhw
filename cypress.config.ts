@@ -8,7 +8,6 @@ export default defineConfig({
     },
     viewportWidth: 1500,
     viewportHeight: 960,
-    testIsolation: false,
     // baseUrl: 'https://archway.finance/'
   },
 });
