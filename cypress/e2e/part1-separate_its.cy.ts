@@ -53,16 +53,19 @@ describe('Part 1 - Navigate to registration page and assert key elements:', {tes
         it('\'Create password\' input field - visible', () => {
             cy.get('input[type = "password"][name = "password"]')
                 .should('be.visible').and('be.enabled')
-            cy.get('button[data-test = "show-hide-password-btn"]').should('be.visible').and('be.enabled')
+            cy.get('button[data-test = "show-hide-password-btn"]').should('be.visible')
+                .and('be.enabled')
         })
 
         it('\'Keep me in the loop with only the juiciest product updates\' checkbox - visible and unchecked', () => {
             cy.get('label:has(input[type = "checkbox"])').should('be.visible').and('not.be.checked')
-            cy.get('label:has(input[type = "checkbox"])').should('have.text', 'Keep me in the loop with only the juiciest product updates')
+            cy.get('label:has(input[type = "checkbox"])')
+                .should('have.text', 'Keep me in the loop with only the juiciest product updates')
         })
 
         it('\'Sign up\' button - visible and disabled', () => {
-            cy.get('button').should('be.visible').and('have.text', 'Sign Up').and('be.disabled')
+            cy.get('button').should('be.visible').and('have.text', 'Sign Up')
+                .and('be.disabled')
         })
 
         it('\'By registering, you accept our Terms of use and Privacy Policy\' text is present on the page', () => {
