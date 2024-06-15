@@ -85,6 +85,7 @@ describe('Part 2 - Verify Cookie Settings Popup - approach 1 via home page', {te
     it(`Clicking "Accept All Cookies" button stores all ${EXPECTED_ARCHWAY_COOKIE_COUNT} cookies in App storage`, () => {
         cy.log("**Verify 'Accept All Cookies' Functionality**")
         // wait for "chat" button to appear before checking the cookies as they get fully stored only after the last API response which makes chat window to appear:
+        cy.log('wait for "chat" button to appear')
         cy.get(CHAT_BTN_LOCATOR, {timeout: 25000, log: true}).should('be.visible')
 
         cy.log('*click* Accept All Cookies button')
@@ -169,6 +170,9 @@ describe('Part 2 - Verify Cookie Settings Popup - approach 1 via home page', {te
 
     it('Verify \'Cookie Settings\' Functionality', () => {
         cy.log("**Verify 'Cookie Settings' Functionality**")
+        // wait for "chat" button to appear before checking the cookies as they get fully stored only after the last API response which makes chat window to appear:
+        cy.log('wait for "chat" button to appear')
+        cy.get(CHAT_BTN_LOCATOR, {timeout: 25000, log: true}).should('be.visible')
         cy.get(COOKIE_SETTINGS_BTN_LOCATOR).click()
 
         // validate all cookie settings dialogue elements:
@@ -200,6 +204,21 @@ describe('Part 2 - Verify Cookie Settings Popup - approach 1 via home page', {te
 
         // click Save settings
         cy.get(SAVE_SETTINGS_BTN_LOCATOR).click()
+
+    })
+
+    it("Verify 'Deny All Cookies' Functionality", () => {
+        cy.log("**Verify 'Deny All Cookies' Functionality**")
+        cy.log("cookie 'fs-cc-updated' is **NOT** stored")
+
+        // wait for "chat" button to appear before checking the cookies as they get fully stored only after the last API response which makes chat window to appear:
+        cy.log('wait for "chat" button to appear')
+        cy.get(CHAT_BTN_LOCATOR, {timeout: 25000, log: true}).should('be.visible')
+
+        cy.get(DENY_BTN_LOCATOR).click()
+
+        //verify fs-cc-updated cookie doesn't exist:
+        cy.getCookie(expected_fs_cc_updated_Cookie.cookieName).should('not.exist')
 
     })
 })
