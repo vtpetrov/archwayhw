@@ -50,12 +50,12 @@ describe('Part 2 - Verify Cookie Settings Popup - approach 1 via home page', {te
     const expected_ga_MLM_Cookie: ArchwayCookie = {
         cookieName: "_ga_MLM9RD0VCQ",
         chainerToUse: "contain",
-        valueToChain: "GS1.1.171840"
+        valueToChain: "GS1.1.17"
     }
     const expected_ga_X4V_Cookie: ArchwayCookie = {
         cookieName: "_ga_X4VEPW17ZN",
         chainerToUse: "contain",
-        valueToChain: "GS1.1.171840"
+        valueToChain: "GS1.1.17"
     }
     const expected_fs_cc_Cookie: ArchwayCookie = {
         cookieName: "fs-cc",
@@ -196,7 +196,6 @@ describe('Part 2 - Verify Cookie Settings Popup - approach 1 via home page', {te
         // Save settings button:
         cy.get(SAVE_SETTINGS_BTN_LOCATOR).should('be.visible')
         cy.get(SAVE_SETTINGS_BTN_LOCATOR).should('have.text', 'Save Settings')
-
 
         // click "Marketing" radio button and assert changes
         cy.get(MARKETING_RADIO_LOCATOR).click()
